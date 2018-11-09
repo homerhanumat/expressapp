@@ -7,3 +7,10 @@ For example, to view the first stage, run:
 ```
 git checkout basic1
 ```
+
+To run any stage of the app:
+
+```
+npm install
+npm start
+```
