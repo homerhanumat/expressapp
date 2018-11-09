@@ -19,7 +19,7 @@ app.use(session({
   secret: "hey there",
   //keys: process.env.KEY,
   maxAge: 60000,
-  secure: true,
+  secure: false,
   httpOnly: true
 
 }))
@@ -34,6 +34,8 @@ function checkAuth (req, res, next) {
 	}
 	next();
 }
+
+app.use(checkAuth);
 
 app.get("/", function(req, res) {
   res.render("index");
