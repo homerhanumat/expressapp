@@ -14,6 +14,19 @@ var app = express();
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  name: "session",
+  secret: "hey there",
+  //keys: process.env.KEY,
+  maxAge: 60000,
+  secure: false,
+  httpOnly: true
+
+}));
+
 // array of secure locations:
 secureURLs = ["/confidential"];
 // this function will be applied to every request:
@@ -26,17 +39,6 @@ function checkAuth (req, res, next) {
 }
 
 app.use(checkAuth);
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  name: "session",
-  secret: "hey there",
-  //keys: process.env.KEY,
-  maxAge: 60000,
-  secure: true,
-  httpOnly: true
-
-}));
 
 app.get("/", function(req, res) {
   res.render("index");
@@ -135,5 +137,5 @@ app.use(function(req, res) {
 });
 
 http.createServer(app).listen(3000, function() {
-  console.log("Basic app (with subscribers) started.");
+  console.log("Basic app (with quotes and subscribers) started.");
 });
