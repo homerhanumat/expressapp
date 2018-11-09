@@ -14,6 +14,18 @@ var app = express();
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// array of secure locations:
+secureURLs = ["/confidential"];
+// this function will be applied to every request:
+function checkAuth (req, res, next) {
+	if (secureURLs.includes(req.url) && (!req.session || !req.session.authenticated)) {
+    res.render('secure-failure');
+		return;
+	}
+	next();
+}
+
+app.use(checkAuth);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -24,20 +36,7 @@ app.use(session({
   secure: true,
   httpOnly: true
 
-}))
-
-app.enable('trust proxy');
-
-// array of secure locations:
-secureURLs = ["/confidential"];
-// this function will be applied to every request:
-function checkAuth (req, res, next) {
-	if (secureURLs.includes(req.url) && (!req.session || !req.session.authenticated)) {
-		res.render('secure-failure');
-		return;
-	}
-	next();
-}
+}));
 
 app.get("/", function(req, res) {
   res.render("index");
@@ -83,10 +82,10 @@ app.post('/login', function (req, res) {
 
 app.get("/confidential", function(req, res) {
   console.log(req.session);
-  res.render("confidential"), {
+  res.render("confidential", {
     username: req.session.username,
     role: req.session.role
-  };
+  });
 });
 
 app.get("/random", function(req, res) {
