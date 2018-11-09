@@ -1,0 +1,11 @@
+{
+  "name": "basic-1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^2.3.1",
+    "express": "^4.16.4"
+  }
+}
