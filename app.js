@@ -6,6 +6,7 @@ const session = require("cookie-session");
 const fs = require("fs");
 
 const users = JSON.parse(fs.readFileSync("./data/users.json"));
+const quotes = JSON.parse(fs.readFileSync("./data/quotes.json"));
 
 var app = express();
 
@@ -79,6 +80,12 @@ app.post('/login', function (req, res) {
 
 app.get("/confidential", function(req, res) {
   res.render("confidential");
+});
+
+app.get("/random", function(req, res) {
+  res.render("random", {
+    quote: quotes[Math.floor(Math.random()*quotes.length)]
+  });
 });
 
 

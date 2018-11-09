@@ -1,0 +1,22 @@
+<% include partial/head %>
+<% include partial/header %>
+<div class="header">
+            <h1>Random Quotes</h1>
+            <h2>Refresh to see a new random quote!</h2>
+        </div>
+<div class="content">
+            
+    <div>
+        <blockquote>
+            <p><%- quote.quote %></p>
+        </blockquote>
+        <footer>
+            &mdash; <%- quote.author %>
+        </footer>
+    </div>
+
+            
+</div>
+<% include partial/footer %>
+
+<% include partial/end %>
