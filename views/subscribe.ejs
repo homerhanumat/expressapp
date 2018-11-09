@@ -1,0 +1,36 @@
+<% include partial/head %>
+<% include partial/header %>
+<div class="header">
+            <h1>Subscribe</h1>
+            <h2></h2>
+        </div>
+<div class="content">
+            
+<form action="/subscribe" method="post" role="form" class="pure-form pure-form-aligned">
+<fieldset>
+    <div class="pure-control-group">
+        <label for="firstname">First Name</label>
+        <input id="firstname" name="firstname" type="text" placeholder="Jane" required>
+    </div>
+
+    <div class="pure-control-group">
+        <label for="lastname">Last Name</label>
+        <input id="lastname" name="lastname" type="text" placeholder="Doe" required>
+    </div>
+
+    <div class="pure-control-group">
+        <label for="email">Password</label>
+        <input id="email" name="email" type="email" placeholder="person@example.com" required>
+    </div>
+
+    <div class="pure-controls">
+      <button type="submit" class="pure-button pure-button-primary">Submit</button>
+    </div>
+</fieldset>
+</form>
+
+            
+</div>
+<% include partial/footer %>
+
+<% include partial/end %>
