@@ -1,0 +1,29 @@
+<% include partial/head %>
+<% include partial/header %>
+<div class="header">
+            <h1>Contact Us</h1>
+            <h2>... we will be in touch soon.</h2>
+        </div>
+<div class="content">
+            
+  <form class="pure-form" action="https://formspree.io/person@example.com" method="POST">
+    <fieldset class="pure-group">
+        <input type="text" class="pure-input-1-2" name = "name" placeholder="Your name here" required>
+        <input type="email" class="pure-input-1-2" name="_replyto" placeholder="person@example.com" required>
+    </fieldset>
+
+    <fieldset class="pure-group">
+        <textarea class="pure-input-1-2" placeholder="Your message here!" required></textarea>
+        <input type="text" name="_gotcha" style="display:none" />
+        <input type="hidden" name="_next" value="https://site.io/thanks.html" />
+        <input type="hidden" name="_subject" value="New submission!" />
+    </fieldset>
+
+    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Send</button>
+  </form>
+
+            
+        </div>
+        <% include partial/footer %>
+
+<% include partial/end %>

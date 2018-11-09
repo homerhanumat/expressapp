@@ -1,5 +1,5 @@
 {
-  "name": "basic-1",
+  "name": "basic-2",
   "private": true,
   "scripts": {
     "start": "node app.js"
