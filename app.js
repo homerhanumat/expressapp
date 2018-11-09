@@ -20,7 +20,7 @@ app.use(session({
   secret: "hey there",
   //keys: process.env.KEY,
   maxAge: 60000,
-  secure: true,
+  secure: false,
   httpOnly: true
 
 }))
