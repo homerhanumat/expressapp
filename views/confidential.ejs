@@ -5,11 +5,22 @@
             <h2>... Welcome, trusted user!</h2>
         </div>
 <div class="content">
-            
-  <p>
-    There is a bottle of bourbon in the leftmost pillar of Giddings Hall.
-  </p>
+  
+  <h2>The Secret</h2>
+    <p>
+      There is a bottle of bourbon in the leftmost 
+      pillar of Giddings Hall.
+    </p>
 
+  <% if (role === "administrator") { %>
+    <h2>Get Subscribers</h2>
+    <p>
+      As an administrator, you can request a CSV file of all subscribers.
+    </p>
+    <form method="get" action="/download">
+      <button type="submit" class="pure-button pure-button-primary">Get Subscribers</button>
+   </form>
+  <% } %>
             
         </div>
         <% include partial/footer %>

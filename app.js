@@ -7,6 +7,7 @@ const fs = require("fs");
 
 const users = JSON.parse(fs.readFileSync("./data/users.json"));
 const quotes = JSON.parse(fs.readFileSync("./data/quotes.json"));
+let subscribers = JSON.parse(fs.readFileSync("./data/subscribers.json"));
 
 var app = express();
 
@@ -24,6 +25,8 @@ app.use(session({
   httpOnly: true
 
 }))
+
+app.enable('trust proxy');
 
 // array of secure locations:
 secureURLs = ["/confidential"];
@@ -79,7 +82,11 @@ app.post('/login', function (req, res) {
 });
 
 app.get("/confidential", function(req, res) {
-  res.render("confidential");
+  console.log(req.session);
+  res.render("confidential"), {
+    username: req.session.username,
+    role: req.session.role
+  };
 });
 
 app.get("/random", function(req, res) {
@@ -88,11 +95,46 @@ app.get("/random", function(req, res) {
   });
 });
 
+app.get("/subscribe", function(req, res) {
+  res.render("subscribe");
+});
+
+app.post('/subscribe', function (req, res) {
+  let subscriber = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email
+  };
+  subscribers.push(subscriber);
+  fs.writeFileSync(
+    "./data/subscribers.json",
+    JSON.stringify(subscribers)
+  );
+  const items = subscribers;
+  const header = Object.keys(items[0]);
+  const replacer = function(key, value) { return value === null ? '' : value } 
+  let csv = items.map(
+    row => header.map(
+      fieldName => JSON.stringify(row[fieldName], replacer)
+    ).join(',')
+  );
+  csv.unshift(header.join(','));
+  csv = csv.join("\n");
+  fs.writeFileSync("./download/subscribers.csv", csv);
+  res.render("subscribe-thanks", {
+    grid: false
+  });
+});
+
+app.get("/download", function(req, res, next) {
+  res.download("./download/subscribers.csv");
+});
+
 
 app.use(function(req, res) {
   res.status(404).render("404");
 });
 
 http.createServer(app).listen(3000, function() {
-  console.log("Basic app (with login) started.");
+  console.log("Basic app (with subscribers) started.");
 });
