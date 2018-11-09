@@ -83,7 +83,6 @@ app.post('/login', function (req, res) {
 });
 
 app.get("/confidential", function(req, res) {
-  console.log(req.session);
   res.render("confidential", {
     username: req.session.username,
     role: req.session.role
