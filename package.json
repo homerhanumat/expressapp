@@ -13,6 +13,7 @@
     "dotenv": "6.1.0",
     "ejs": "2.3.1",
     "express": "4.16.4",
+    "express-enforces-ssl": "1.1.0",
     "helmet": "3.15.0",
     "markdown-it": "8.4.2",
     "ms": "2.1.1"
