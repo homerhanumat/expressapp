@@ -4,9 +4,15 @@ var express = require("express");
 const bodyParser = require("body-parser");
 const session = require("cookie-session");
 const fs = require("fs");
+const md = require('markdown-it')({
+  html: true,
+  linkify: true,
+  typographer: true
+});
 
 const users = JSON.parse(fs.readFileSync("./data/users.json"));
 const quotes = JSON.parse(fs.readFileSync("./data/quotes.json"));
+const articles = JSON.parse(fs.readFileSync("./data/articles.json"));
 let subscribers = JSON.parse(fs.readFileSync("./data/subscribers.json"));
 
 var app = express();
@@ -130,11 +136,34 @@ app.get("/download", function(req, res, next) {
   res.download("./download/subscribers.csv");
 });
 
+app.get("/article-list", function(req, res) {
+  res.render("article-list", {
+    articles: articles
+  });
+});
+
+app.get("/articles-:article", function(req, res, next) {
+  const mdPath = "articles/" + req.params.article + ".md";
+  fs.readFile(mdPath, function(err, mdFile) {
+    if (err) {
+      console.log(err);
+      next();
+    } else {
+      const article = articles.find(elem => elem.filename === req.params.article);
+      const contents = md.render(mdFile.toString());
+      res.render("article", {
+        article: article,
+        contents: contents
+      });
+    }
+  });
+});
+
 
 app.use(function(req, res) {
   res.status(404).render("404");
 });
 
 http.createServer(app).listen(3000, function() {
-  console.log("Basic app (with quotes and subscribers) started.");
+  console.log("Basic app (with posts) started.");
 });

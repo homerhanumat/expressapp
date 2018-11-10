@@ -1,0 +1,27 @@
+<% include partial/head %>
+<% include partial/header %>
+<div class="header">
+            <h1>News</h1>
+            <h2></h2>
+        </div>
+<div class="content">
+        <% articles.forEach(function(article){ %>
+            <section class="post">
+                <header class="post-header">
+                <% if (article.avatar) { %>
+                    <img width="48" height="48" alt="<%- article.author %>&#x27;s avatar" class="post-avatar" src="img/avatars/<%- article.avatar %>">
+                <% } %>
+                <h2 class="post-title"><a href="articles-<%- article.filename %>"><%- article.title %></a></h2>
+                <p class="post-meta">
+                    <%- article.date %>. 
+                    By <a href="#" class="post-author"><%- article.author %></a> under 
+                    <% article.categories.forEach(function(category) { %>
+                        <a class="post-category" href="#"><%- category %></a> 
+                    <% }) %>
+                </p>
+                </header>
+            </section>
+        <% }) %>       
+</div>
+<% include partial/footer %>
+<% include partial/end %>

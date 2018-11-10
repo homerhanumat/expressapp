@@ -246,3 +246,57 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         left: 150px;
     }
 }
+
+/* from pure-layout-blog css */
+
+.post {
+    padding-bottom: 2em;
+}
+.post-title {
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+.post-title a, .post-meta a, a.post-author {
+    text-decoration: none;
+    color: #2a5dcc;
+}
+
+a.post-category {
+    text-decoration: none;
+    color: white;
+}
+
+.post-title a:hover, .post-meta a:hover, a.post-author:hover {
+    color: #0e6097;
+}
+
+a.post-category:hover {
+    color: black;
+}
+
+.post-avatar {
+    border-radius: 50px;
+    float: right;
+    margin-left: 1em;
+}
+.post-description {
+    font-family: Georgia, "Cambria", serif;
+    color: #444;
+    line-height: 1.8em;
+}
+.post-meta {
+    color: #999;
+    font-size: 90%;
+    margin: 0;
+}
+
+.post-category {
+    margin: 0 0.1em;
+    padding: 0.3em 1em;
+    color: #fff;
+    background: #999;
+    font-size: 80%;
+}
+
+

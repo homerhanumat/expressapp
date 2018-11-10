@@ -1,0 +1,26 @@
+[
+    {
+        "filename": "some-post",
+        "title": "Floating Deities in Epic Literature",
+        "author": "Homer White",
+        "date": "2018-11-09",
+        "avatar": "homer-white.jpg",
+        "categories": ["philology"]
+    },
+    {
+        "filename": "another-post",
+        "title": "Infinite Loops",
+        "author": "Homer White",
+        "date": "2018-11-08",
+        "avatar": "homer-white.jpg",
+        "categories": ["computer science"]
+    },
+    {
+        "filename": "more-stuff",
+        "title": "Hanuman in the Ramayana",
+        "author": "Homer White",
+        "date": "2018-11-07",
+        "avatar": "homer-white.jpg",
+        "categories": ["sanskrit", "philology"]
+    }
+]
