@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("cookie-session");
 const helmet = require("helmet");
 const ms = require("ms");
+const rootRouter = require("./root-router");
 
 var app = express();
 
