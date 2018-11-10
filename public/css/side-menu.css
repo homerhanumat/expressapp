@@ -299,4 +299,13 @@ a.post-category:hover {
     font-size: 80%;
 }
 
+/* fix header for article list */
 
+.header a {
+    text-decoration: none;
+    color: #333;
+}
+
+.header a:hover {
+    color: blue;
+}
