@@ -22,5 +22,13 @@
         "date": "2018-11-07",
         "avatar": "homer-white.jpg",
         "categories": ["sanskrit", "philology"]
+    },
+    {
+        "filename": "still-more",
+        "title": "Sanskrit Geekery",
+        "author": "Christopher Minkowski",
+        "date": "2018-11-03",
+        "avatar": "anonymous.jpg",
+        "categories": ["sanskrit", "philology"]
     }
 ]
