@@ -1,7 +1,7 @@
 <% include partial/head %>
 <% include partial/header %>
 <div class="header">
-            <h1>News</h1>
+            <a href="article-list"><h1>News</h1></a>
             <h2></h2>
         </div>
 <div class="content">
@@ -11,12 +11,12 @@
                 <% if (article.avatar) { %>
                     <img width="48" height="48" alt="<%- article.author %>&#x27;s avatar" class="post-avatar" src="img/avatars/<%- article.avatar %>">
                 <% } %>
-                <h2 class="post-title"><a href="articles-<%- article.filename %>"><%- article.title %></a></h2>
+                <h2 class="post-title"><a href="article-<%- article.filename %>"><%- article.title %></a></h2>
                 <p class="post-meta">
                     <%- article.date %>. 
-                    By <a href="#" class="post-author"><%- article.author %></a> under 
+                    By <a href="articles-author-<%- article.author %>" class="post-author"><%- article.author %></a> under 
                     <% article.categories.forEach(function(category) { %>
-                        <a class="post-category" href="#"><%- category %></a> 
+                        <a class="post-category" href="articles-category-<%- category %>"><%- category %></a> 
                     <% }) %>
                 </p>
                 </header>
