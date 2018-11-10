@@ -1,14 +1,20 @@
 {
-  "name": "basic-2",
+  "name": "basic-node-app",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
+  "engines": {
+    "node": "8.11.3"
+  },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "cookie-session": "^2.0.0-beta.3",
-    "ejs": "^2.3.1",
-    "express": "^4.16.4",
-    "markdown-it": "^8.4.2"
+    "body-parser": "1.18.3",
+    "cookie-session": "2.0.0-beta.3",
+    "dotenv": "6.1.0",
+    "ejs": "2.3.1",
+    "express": "4.16.4",
+    "helmet": "3.15.0",
+    "markdown-it": "8.4.2",
+    "ms": "2.1.1"
   }
 }

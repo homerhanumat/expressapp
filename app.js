@@ -3,8 +3,22 @@ var path = require("path");
 var express = require("express");
 const bodyParser = require("body-parser");
 const session = require("cookie-session");
+const helmet = require("helmet");
+const ms = require("ms");
 
 var app = express();
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
+
+if (process.env.NODE_ENV == "production") {
+  app.use(enforceSSL());
+  app.use(helmet.hsts({
+    maxAge: ms("1 year"),
+    includeSubdomains: true
+  }));
+};
 
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -12,12 +26,13 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.enable('trust proxy'); // optional, not needed for secure cookies
 app.use(session({
   name: "session",
   secret: "hey there",
-  //keys: process.env.KEY,
+  keys: process.env.KEY,
   maxAge: 60000,
-  secure: false,
+  secure: process.env.NODE_ENV == "production" ? true : false,
   httpOnly: true
 
 }));
