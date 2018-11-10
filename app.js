@@ -142,7 +142,7 @@ app.get("/article-list", function(req, res) {
   });
 });
 
-app.get("/articles-:article", function(req, res, next) {
+app.get("/article-:article", function(req, res, next) {
   const mdPath = "articles/" + req.params.article + ".md";
   fs.readFile(mdPath, function(err, mdFile) {
     if (err) {
