@@ -59,6 +59,6 @@ app.use(function(req, res) {
   res.status(404).render("404");
 });
 
-http.createServer(app).listen(3000, function() {
+http.createServer(app).listen(process.env.PORT || 3000, function() {
   console.log("Basic app (with router file) started.");
 });
