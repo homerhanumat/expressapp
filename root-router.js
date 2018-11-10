@@ -112,7 +112,7 @@ app.get("/", function(req, res) {
     });
   });
   
-  app.get("/articles-:article", function(req, res, next) {
+  app.get("/article-:article", function(req, res, next) {
     const mdPath = "articles/" + req.params.article + ".md";
     fs.readFile(mdPath, function(err, mdFile) {
       if (err) {
@@ -126,6 +126,24 @@ app.get("/", function(req, res) {
           contents: contents
         });
       }
+    });
+  });
+  
+  app.get("/articles-author-:author", function(req, res) {
+    const articlesByAuthor = articles.filter(function(a) {
+      return a.author === req.params.author;
+    });
+    res.render("article-list", {
+      articles: articlesByAuthor
+    });
+  });
+  
+  app.get("/articles-category-:category", function(req, res) {
+    const articlesUnderCategory = articles.filter(function(a) {
+      return a.categories.includes(req.params.category);
+    });
+    res.render("article-list", {
+      articles: articlesUnderCategory
     });
   });
 
