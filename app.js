@@ -3,18 +3,6 @@ var path = require("path");
 var express = require("express");
 const bodyParser = require("body-parser");
 const session = require("cookie-session");
-const fs = require("fs");
-const md = require('markdown-it')({
-  html: true,
-  linkify: true,
-  typographer: true
-});
-const rootRouter = require("./root-router");
-
-// const users = JSON.parse(fs.readFileSync("./data/users.json"));
-// const quotes = JSON.parse(fs.readFileSync("./data/quotes.json"));
-// const articles = JSON.parse(fs.readFileSync("./data/articles.json"));
-// let subscribers = JSON.parse(fs.readFileSync("./data/subscribers.json"));
 
 var app = express();
 
