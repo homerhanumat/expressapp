@@ -30,7 +30,7 @@ It could use a bit more styling, perhaps.
 
 With images it's best to control size and styling, so use HTML tags, not Markdown shortcuts.  Here is an image from Imgur:
 
-<img class="pure-img-responsive" src="/img/hermitage.png" alt="hermitage">
+<img class="pure-img-responsive" src="https://imgur.com/O3O6rrx.png" alt="hermitage">
 
 
 
