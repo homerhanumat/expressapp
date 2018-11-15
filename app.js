@@ -122,9 +122,7 @@ app.post('/subscribe', function (req, res) {
   csv.unshift(header.join(','));
   csv = csv.join("\n");
   fs.writeFileSync("./download/subscribers.csv", csv);
-  res.render("subscribe-thanks", {
-    grid: false
-  });
+  res.render("subscribe-thanks");
 });
 
 app.get("/download", function(req, res, next) {
