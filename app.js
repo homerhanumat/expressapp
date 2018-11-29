@@ -10,9 +10,9 @@ const rootRouter = require("./root-router");
 
 var app = express();
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   require('dotenv').load();
+// }
 
 if (process.env.NODE_ENV == "production") {
   app.use(enforceSSL());
@@ -32,7 +32,6 @@ app.enable('trust proxy'); // optional, not needed for secure cookies
 app.use(session({
   name: "session",
   secret: "hey there",
-  keys: process.env.KEY,
   maxAge: 60000,
   secure: process.env.NODE_ENV == "production" ? true : false,
   httpOnly: true
