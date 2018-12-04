@@ -28,7 +28,7 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
-app.enable('trust proxy'); // optional, not needed for secure cookies
+app.enable('trust proxy');
 app.use(session({
   name: "session",
   secret: "hey there",
